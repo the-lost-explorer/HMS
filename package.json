@@ -1,0 +1,30 @@
+{
+  "name": "hms",
+  "version": "1.0.0",
+  "description": "This is a hostel management system",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-lost-explorer/HMS.git"
+  },
+  "author": "Amey Parundekar, Dinesh Samuel Sathia Raj",
+  "license": "HMS",
+  "bugs": {
+    "url": "https://github.com/the-lost-explorer/HMS/issues"
+  },
+  "homepage": "https://github.com/the-lost-explorer/HMS#readme",
+  "dependencies": {
+    "express": "*",
+    "morgan": "*",
+    "path": "*",
+    "pg-promise":"*",
+    "crypto":"*",
+    "express-session":"*",
+    "body-parser":"*"
+  }
+  
+}

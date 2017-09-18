@@ -1,0 +1,76 @@
+var crypto = require('crypto');
+var path = require('path');
+
+//Cryptography
+function hash(input, salt) {
+    var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
+    return ["pbkdf2", "10000", salt, hashed.toString('hex')].join('$').toString('hex');
+}
+
+exports.hash = function(input, salt){
+    return hash(input, salt);
+}
+
+exports.getHash = function(req, res){
+    var input = req.params.input;
+    var salt = crypto.randomBytes(128).toString('hex');
+    var hashedString = hash(input, salt);
+    res.send(hashedString);
+  }
+
+//Check Login
+function isLogged(req,pool,callback){
+    if(req.session && req.session.auth && req.session.auth.regno){
+        pool.one('SELECT * FROM hms.users WHERE regno= $1',[req.session.auth.regno]);
+            .then(function(data){
+                if(callback){callback(data.regno);}
+
+            });
+            .catch(function(error){
+                console.log(error + 'isLogged');
+                if(callback){callback("error");}
+            });
+    }else{
+        if(callback){callback("false");}
+    }
+}
+
+exports.checkLogin = function(req, res, pool){
+    isLogged(req, pool, function(result){
+      if(result=="false"){
+        res.status(403).send("false");
+      }else if(result=="error"){
+        res.status(500).send("error");
+      }else{
+        res.send(result);
+      }
+    });
+  }
+
+//Login 
+exports.login = function(req,res,pool){
+    var regno = req.body.regno;
+    var password = req.body.password;
+    pool.one('SELECT * FROM hms.users WHERE regno = $1',[regno])
+    .then(function(data){
+        var dbString = data.password;
+        var salt = dbString.split('$')[2];
+        var hashedPassword = hash(password,salt);
+        if(hashedPPassword = dbString){
+            req.session.auth = {regno: data.regno};
+            console.log(data.regno + 'successfully logged in!');
+            res.status(200).send('Credentials Correct!');
+        }else{
+            res.status(403).send('User/Password is inavlid');
+        }
+    })
+    .catch(function(error){
+        console.log(error.toString());
+        res.status(500).send(error.toString());
+    })
+}
+
+exports.logout = function(req,res,pool){
+
+}
+
