@@ -1,0 +1,34 @@
+<html>
+        <head>
+            <title>HMS</title>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script src="http://localhost:8085/ui/login.js"></script>
+            
+            <!--CSS-->
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+            <link rel="stylesheet" href="http://localhost:8085/ui/styles.css">
+    
+            <!--External JavaScript-->
+            <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        </head>
+    
+        <body>
+                <i class="material-icons" style="color: #424242; float: left; font-size: 64px; padding-top: 29px; padding-left: 30px;">business</i>
+                <p id="title"> HMS </p>
+            <div id="logout">Sign Out</div>
+            <div id="logout-box">
+                    <h1>You have been logged out.</h1>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent button" id="back-home">
+                                TAKE me back to Home
+                                <script>
+                                    $("#logout").css('display','none');
+                                    $('#back-home').click(function(){
+                                        window.location.href = "http://localhost:8085/";
+                                    });
+                                </script>
+                    </button>
+                </div>
+        </body>
+    </html>

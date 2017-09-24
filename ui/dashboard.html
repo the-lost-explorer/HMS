@@ -1,0 +1,71 @@
+<html>
+        <head>
+            <title>HMS</title>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script src="http://localhost:8085/ui/dashboard.js"></script>
+            <script src="http://localhost:8085/ui/login.js"></script>
+            
+            <!--CSS-->
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+            <link rel="stylesheet" href="http://localhost:8085/ui/styles.css">
+    
+            <!--External JavaScript-->
+            <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        </head>
+    
+        <body>
+                <i class="material-icons" style="color: #424242; float: left; font-size: 64px; padding-top: 29px; padding-left: 30px;">business</i>
+                <p id="title"> HMS </p>
+            <div id="logout">Sign Out</div>
+            <div id="dashboard">
+                <table id="tabs" cellpadding="10">
+                    <tr id="student-details-tab"><td>PROFILE</td></tr>
+                    <tr id="mess-details-tab"><td>MESS</td></tr>
+                    <tr id="hostel-room-details-tab"><td>HOSTEL ROOM</td></tr>
+                    <tr id="attendance-tab"><td>ATTENDANCE</td></tr>
+                </table>
+                <div id = "student-details">
+                    <table id ="personal-details">
+                        <h5 style="color: blue">PERSONAL DETAILS</h5>
+                        <tr><td>Register No.</td><td>:</td><td id="regno"><td><tr>
+                        <tr><td>Name</td><td>:</td><td id="name"><td><tr>
+                        <tr><td>Date of birth</td><td>:</td><td id="dob"><td><tr>
+                        <tr><td>Email ID</td><td>:</td><td id="email"><td><tr>
+                        <tr><td>Contact</td><td>:</td><td id="contact"><td><tr>
+                        <tr><td>Stream</td><td>:</td><td id="stream"><td><tr>
+                    </table>
+                    <table id ="parent-details">
+                        <h5 style="color: blue">PARENT DETAILS</h5>
+                        <tr><td>Father's Name</td><td>:</td><td id="father-name"><td><tr>
+                        <tr><td>Mother's Name</td><td>:</td><td id="mother-name"><td><tr>
+                        <tr><td>Contact</td><td>:</td><td id="parent-contact"><td><tr>
+                        <tr><td>Email ID</td><td>:</td><td id="parent-email"><td><tr>
+                        <tr><td>Home Address</td><td>:</td><td id="address"><td><tr>
+                    </table>
+                    <table id ="proctor-details">
+                        <h5 style="color: blue">PROCTOR DETAILS</h5>
+                        <tr><td>Name</td><td>:</td><td id="proctor-name"><td><tr>
+                        <tr><td>Email ID</td><td>:</td><td id="proctor-email"><td><tr>
+                        <tr><td>Contact</td><td>:</td><td id="proctor-contact"><td><tr>
+                    </table>
+                </div>
+                <div id = "mess-details">
+                        <table id ="mess-details-table">
+                                <h5 style="color: blue">ROOM DETAILS</h5>
+                                <tr><td>Mess Type</td><td>:</td><td id="mess-type"><td><tr>
+                            </table>
+                </div>
+                <div id = "hostel-room-details">
+                        <table id ="hostel-details">
+                                <h5 style="color: blue">ROOM DETAILS</h5>
+                                <tr><td>Hostel Block</td><td>:</td><td id="hostel-block"><td><tr>
+                                <tr><td>Room Number</td><td>:</td><td id="room-no"><td><tr>
+                                <tr><td>Room Type</td><td>:</td><td id="room-type"><td><tr>
+                            </table>
+                </div>
+                <div id = "attendance"></div>
+            </div>
+        </body>
+    </html>

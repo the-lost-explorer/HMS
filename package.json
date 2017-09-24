@@ -24,7 +24,8 @@
     "pg-promise":"*",
     "crypto":"*",
     "express-session":"*",
-    "body-parser":"*"
+    "body-parser":"*",
+    "chalk":"*"
   }
   
 }

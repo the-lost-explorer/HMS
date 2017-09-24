@@ -1,3 +1,13 @@
+/**
+ * author @Amey Parundekar
+This file manages the session actions
+It contains the following features:
+  getHash with any string input
+  checkLogin with auth cookie
+  login with user ID and password
+  logout with auth cookie
+*/
+
 var crypto = require('crypto');
 var path = require('path');
 
@@ -18,14 +28,14 @@ exports.getHash = function(req, res){
     res.send(hashedString);
   }
 
+  
 //Check Login
 function isLogged(req,pool,callback){
     if(req.session && req.session.auth && req.session.auth.regno){
-        pool.one('SELECT * FROM hms.users WHERE regno= $1',[req.session.auth.regno]);
+        pool.one('SELECT * FROM hms.users WHERE regno= $1',[req.session.auth.regno])
             .then(function(data){
                 if(callback){callback(data.regno);}
-
-            });
+            })
             .catch(function(error){
                 console.log(error + 'isLogged');
                 if(callback){callback("error");}
@@ -35,6 +45,7 @@ function isLogged(req,pool,callback){
     }
 }
 
+//CHeck login true
 exports.checkLogin = function(req, res, pool){
     isLogged(req, pool, function(result){
       if(result=="false"){
@@ -70,7 +81,30 @@ exports.login = function(req,res,pool){
     })
 }
 
-exports.logout = function(req,res,pool){
+//Check login false
+exports.checkLoginf = function(req, pool, callback){
+    isLogged(req, pool, function(result){
+      if(result=="false"){
+        callback("false");
+      }else if(result=="error"){
+        callback("error");
+      }else{
+        callback(result);
+      }
+    });
+  }
 
-}
-
+//Logout
+exports.logout = function(req, res, pool){
+    isLogged(req, pool, function(result){
+      if(result=="false"){
+        res.status(403).send("First log in to logout!");
+      }else if(result=="error"){
+        res.status(500).send("Error in loggin out!");
+      }else{
+        var username = req.session.auth.userId;
+        delete req.session.auth;
+        res.status(200).send("Logged out - " + username + "!");
+      }
+    });
+  }

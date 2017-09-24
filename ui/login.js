@@ -1,14 +1,17 @@
 $(document).ready(function(){
-    console.log('login');
-    var submit = $('#login');
-    submit.on('click',function(){
+
+    var loginbtn = $('#login');
+    var logoutbtn = $('#logout');
+
+    //Login Request
+    loginbtn.on('click',function(){
         var login = new XMLHttpRequest();
         login.onload = function(){
             if(login.readyState = XMLHttpRequest.DONE){
                 if(login.status===200){
-                    $('#message').html(login.responseText);
+                    window.location.href = "http://localhost:8085/ui/dashboard.html";
                 }else{
-                    $('#message').html(login.responseText);
+                    $('#message').html('Invalid Credentials');
                 }
             }
         }
@@ -19,4 +22,22 @@ $(document).ready(function(){
         login.setRequestHeader('Content-Type', 'application/json');
         login.send(JSON.stringify({regno: regno, password: password}));
     });
+
+//Logout Request
+    logoutbtn.on('click',function(){
+        var logout = new XMLHttpRequest();
+        logout.onload = function(){
+            if(logout.readyState = XMLHttpRequest.DONE){
+                if(logout.status===200){
+                    window.location.href = "http://localhost:8085/ui/logout.html";
+                }else{
+                    $('#message').html(logout.responseText);
+                }
+            }
+        }
+        logout.open('GET','http://localhost:8085/logout',true);
+        logout.send(null);
+    });
+
 });
+

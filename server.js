@@ -1,10 +1,29 @@
-//External Libraries
+//Routing Library
 var express = require('express');
-var morgan = require('morgan');
-var path = require('path');
-var session = require('express-session');
 var app = express();
+
+//Logging
+var morgan = require('morgan');
+app.use(morgan('dev'));
+
+//Path functions
+var path = require('path');
+
+//Session management
+var session = require('express-session');
+app.use(session({
+    secret: 'someRandomSecretValue',
+    cookie: {maxAge: 1000*60*60}
+}));
+
+//Body parsing for reqs
 var bodyParser = require('body-parser');
+app.use(bodyParser());
+
+//Beautify console
+var chalk = require('chalk');
+var write = console.log;
+
 //PostgreSQL 
 var pgp = require('pg-promise')();
 var config = {
@@ -18,16 +37,9 @@ var pool = pgp(config);
 
 //External Dependencies
 var sessionManager = require('./session-manager.js');
+var dashManager = require('./dash-manager.js');
 
-//Use
-app.use(morgan('combined'));
-app.use(bodyParser());
-app.use(session({
-    secret: 'someRandomSecretValue',
-    cookie: {maxAge: 1000*60*60}
-}));
-
-
+//Routing
 app.get('/',function(req,res){
     res.sendFile(path.join(__dirname,'ui','index.html'));
 });
@@ -36,34 +48,45 @@ app.get('/ui/:fileName', function(req, res){
     res.sendFile(path.join(__dirname, 'ui', req.params.fileName));
 });
 
-//Test function for database connectivity
-function getUser(res){
-    pool.any("SELECT * FROM hms.users")
-    .then(function(result){
-        res.status(200).send(result);
-    })
-    .catch(function(err){
-        res.status(500).send(err);
-    });
-}
-
-app.get('/test',function(req,res){
-    getUser(res);
-});
-
 //login
 app.post('/login', function(req, res){
     sessionManager.login(req,res,pool);
  });
 
-//Hashing
+//check-login
+app.get('/check-login', function(req, res){
+    sessionManager.checkLogin(req,res,pool);
+ });
+
+app.get('/get-user', function(req, res){
+    dashManager.getUser(req,res,pool);
+});
+
+
+//logout
+app.get('/logout', function(req, res){
+sessionManager.logout(req,res,pool);
+});
+
+//get-room
+app.get('/get-room/:input', function(req, res) {
+    dashManager.getRoom(req, res, pool);
+  });
+
+//get-room
+app.get('/get-mess/:input', function(req, res) {
+    dashManager.getMess(req, res, pool);
+  });
+
+//Hashing 
+//for backend use only
 app.get('/hash/:input', function(req, res) {
     sessionManager.getHash(req, res);
   });
 
 var port = 8085;
 app.listen(port,function(){
-    console.log("HMS is up and running!");    
+    write(chalk.red.bold('Hostel Management System up and running on port:'),chalk.green.bold('8085'));
 });
 
    
