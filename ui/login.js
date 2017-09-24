@@ -38,6 +38,5 @@ $(document).ready(function(){
         logout.open('GET','http://localhost:8085/logout',true);
         logout.send(null);
     });
-
 });
 

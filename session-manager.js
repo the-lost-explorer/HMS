@@ -1,5 +1,5 @@
 /**
- * author @Amey Parundekar
+author @Amey Parundekar
 This file manages the session actions
 It contains the following features:
   getHash with any string input
