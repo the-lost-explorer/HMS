@@ -1,0 +1,160 @@
+<html>
+    <head>
+        <title>HMS</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="http://localhost:8085/ui/dashboard-wr.js"></script>
+        <script src="http://localhost:8085/ui/login.js"></script>
+        
+        <!--CSS-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">        
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+        <link rel="stylesheet" href="http://localhost:8085/ui/styles.css">
+
+        <!--External JavaScript-->
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    </head>
+
+    <body>
+            <i class="material-icons" style="color: #424242; float: left; font-size: 64px; padding-top: 29px; padding-left: 30px;">business</i>
+            <p id="title"> HMS </p>WARDEN LOGIN 
+        <div id="logout">Sign Out</div>
+        <div id="dashboard">
+            <table id="tabs" cellpadding="10">
+                <tr id="search-student-tab"><td>SEARCH STUDENT</td></tr>
+                <tr id="broadcast-tab"><td>BROADCAST</td></tr>
+                <tr id="add-student-tab"><td>MESS/HOSTEL REGISTRATION</td></tr>
+                <tr id="approval-tab"><td>LEAVE APPROVAL</td></tr>
+            </table>
+            <div id="student-search">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-left: 10% ">
+                        <input class="mdl-textfield__input" type="text" id="regno-search">
+                        <label class="mdl-textfield__label" for="username" id="username-label">Registration No</label>
+                    </div>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent button" id="search">
+                        SEARCH
+                    </button>
+            </div>
+            <div id = "student-details-wr">
+                <table id ="personal-details">
+                    <h5 style="color: blue">PERSONAL DETAILS</h5>
+                    <tr><td>Register No.</td><td>:</td><td id="regno"><td><tr>
+                    <tr><td>Name</td><td>:</td><td id="name"><td><tr>
+                    <tr><td>Date of birth</td><td>:</td><td id="dob"><td><tr>
+                    <tr><td>Email ID</td><td>:</td><td id="email"><td><tr>
+                    <tr><td>Contact</td><td>:</td><td id="contact"><td><tr>
+                    <tr><td>Stream</td><td>:</td><td id="stream"><td><tr>
+                </table>
+                <table id ="parent-details">
+                    <h5 style="color: blue">PARENT DETAILS</h5>
+                    <tr><td>Father's Name</td><td>:</td><td id="father-name"><td><tr>
+                    <tr><td>Mother's Name</td><td>:</td><td id="mother-name"><td><tr>
+                    <tr><td>Contact</td><td>:</td><td id="parent-contact"><td><tr>
+                    <tr><td>Email ID</td><td>:</td><td id="parent-email"><td><tr>
+                    <tr><td>Home Address</td><td>:</td><td id="address"><td><tr>
+                </table>
+                <table id ="proctor-details">
+                    <h5 style="color: blue">PROCTOR DETAILS</h5>
+                    <tr><td>Name</td><td>:</td><td id="proctor-name"><td><tr>
+                    <tr><td>Email ID</td><td>:</td><td id="proctor-email"><td><tr>
+                    <tr><td>Contact</td><td>:</td><td id="proctor-contact"><td><tr>
+                </table>
+                <table id ="mess-details-table">
+                    <h5 style="color: blue">MESS DETAILS</h5>
+                    <tr><td>Mess Type</td><td>:</td><td id="mess-type"><td><tr>
+                </table>
+                <table id ="hostel-details">
+                    <h5 style="color: blue">ROOM DETAILS</h5>
+                    <tr><td>Hostel Block</td><td>:</td><td id="hostel-block"><td><tr>
+                    <tr><td>Room Number</td><td>:</td><td id="room-no"><td><tr>
+                    <tr><td>Room Type</td><td>:</td><td id="room-type"><td><tr>
+                </table>
+            </div>
+            <div id = "broadcast">
+                <H6>BROADCAST A MESSAGE TO ALL STUDENTS</H6>
+                <div class="mdl-textfield mdl-js-textfield" style="width:700px">
+                    <textarea class="mdl-textfield__input" type="text" rows="8" id="broadcast-message" style="width:700px"></textarea>
+                    <label class="mdl-textfield__label" for="broadcast-message" style="width:700px">Type here</label>
+                </div>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent button" id="send">
+                 SEND
+                </button>
+                <hr>
+                <br>
+                <!-- <table id="pm" cellspacing="10">
+                <tr>
+                    <td class="m" id="name-wr">Name</td>
+                    <td class="m" id="message-wr">Message</td>
+                    <td class="m" id="time-wr">Time</td>
+                </tr>
+                <tr id="message" cellspacing="10">
+                    <td class="m">a</td>
+                    <td class="m">b</td>
+                    <td class="m">c</td>
+                </tr>
+                </table> -->
+            </div>
+            <div id = "add-student">
+                <h4>MESS/HOSTEL REGISTRATION</h4>
+                <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" pattern="[1][4-7][B,M][A-Z]{2}[0-9]{4}" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="regno-hmr">
+                        <label class="mdl-textfield__label" for="regno-hmr">Registration Number</label>
+                        <span class="mdl-textfield__error">Invalid Registration number.</span>
+                </div><br>
+                <h5 style="color: blue">MESS DETAILS</h5>
+                <span id="mess-t" style="width:100px">MESS TYPE</span>
+                <button id="demo-menu-lower-left-mess" class="mdl-button mdl-js-button"><i class="material-icons">keyboard_arrow_down</i></button>
+                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                    for="demo-menu-lower-left-mess">
+                <li class="mdl-menu__item" id="special-mess">SPECIAL MESS</li>
+                <li class="mdl-menu__item" id="north-mess">NORTH MESS</li>
+                <li class="mdl-menu__item" id="south-mess">SOUTH MESS</li>
+                </ul>
+                <span id="food" style="width:100px">FOOD TYPE</span>
+                <button id="demo-menu-lower-left-food" class="mdl-button mdl-js-button"><i class="material-icons">keyboard_arrow_down</i></button>
+                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                    for="demo-menu-lower-left-food">
+                <li class="mdl-menu__item" id="vegetarian">VEGETARIAN</li>
+                <li class="mdl-menu__item" id="non-vegetarian">NON VEGETAIRAN</li>
+                </ul>
+                <hr>
+                <h5 style="color: blue">HOSTEL DETAILS</h5>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" pattern="[A-C]" id="block">
+                    <label class="mdl-textfield__label" for="block">Hostel Block</label>
+                    <span class="mdl-textfield__error">Invalid block.</span>
+                </div><br>
+
+                <span id="ac" style="width:100px">AC</span>
+                <button id="demo-menu-lower-left-ac" class="mdl-button mdl-js-button"><i class="material-icons">keyboard_arrow_down</i></button>
+                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                    for="demo-menu-lower-left-ac">
+                <li class="mdl-menu__item" id="aco">AIR CONDITIONED</li>
+                <li class="mdl-menu__item" id="naco">NON AIR CONDITIONED</li>
+                </ul>
+
+                <span id="bed" style="width:100px">ROOM SIZE</span>
+                <button id="demo-menu-lower-left-bed" class="mdl-button mdl-js-button"><i class="material-icons">keyboard_arrow_down</i></button>
+                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                    for="demo-menu-lower-left-bed">
+                <li class="mdl-menu__item" id="4b">4 BED</li>
+                <li class="mdl-menu__item" id="3b">3 BED</li>
+                <li class="mdl-menu__item" id="2b">2 BED</li>
+                </ul>
+                <br>
+
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="number" id="roomno">
+                    <label class="mdl-textfield__label" for="roomno">Room Number</label>
+                    <span class="mdl-textfield__error">Invalid room.</span>
+                </div><br><br>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent button" id="adds">
+                    REGISTER 
+                </button>
+            </div>
+            <div id = "approval">
+
+            </div>
+        </div>
+    </body>
+</html>

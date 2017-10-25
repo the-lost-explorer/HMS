@@ -17,7 +17,7 @@
     
         <body>
                 <i class="material-icons" style="color: #424242; float: left; font-size: 64px; padding-top: 29px; padding-left: 30px;">business</i>
-                <p id="title"> HMS </p>
+                <p id="title"> HMS </p> STUDENT LOGIN
             <div id="logout">Sign Out</div>
             <div id="dashboard">
                 <table id="tabs" cellpadding="10">
@@ -27,6 +27,7 @@
                     <tr id="attendance-tab"><td>ATTENDANCE</td></tr>
                 </table>
                 <div id = "student-details">
+                    <i class="material-icons" style="float: right" id="edit">mode_edit</i>
                     <table id ="personal-details">
                         <h5 style="color: blue">PERSONAL DETAILS</h5>
                         <tr><td>Register No.</td><td>:</td><td id="regno"><td><tr>
@@ -51,6 +52,108 @@
                         <tr><td>Contact</td><td>:</td><td id="proctor-contact"><td><tr>
                     </table>
                 </div>
+                <div id="add-student-d">
+                        <i class="material-icons" id="cross" style="float: right;">indeterminate_check_box</i>
+                <table id="add-details">
+                        <tr id="add-details-1">
+                           <td style="padding: 0 0 0 50">
+                               <h5 style="color: blue">PERSONAL DETAILS</h5>
+       
+                               <div class="mdl-textfield mdl-js-textfield">
+                                       <input class="mdl-textfield__input" pattern="[1][4-7][B,M][A-Z]{2}[0-9]{4}" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="regno">
+                                       <label class="mdl-textfield__label" for="regno">Registration Number</label>
+                                       <span class="mdl-textfield__error">Invalid Registration number.</span>
+                               </div><br>
+                               
+                               <div class="mdl-textfield mdl-js-textfield">
+                                       <input class="mdl-textfield__input" pattern="^[a-zA-Z\s]+$" type="text" id="name">
+                                       <label class="mdl-textfield__label" for="regno">Name</label>
+                                       <span class="mdl-textfield__error">Invalid Name.</span>
+                               </div><br>
+                           
+                               <div class="mdl-textfield mdl-js-textfield">
+                                       <input class="mdl-textfield__input" type="email" id="email">
+                                       <label class="mdl-textfield__label" for="email">Email</label>
+                                       <span class="mdl-textfield__error">Invalid email.</span>
+                               </div><br>
+                              
+                               <div class="mdl-textfield mdl-js-textfield">
+                                       <input class="mdl-textfield__input" pattern="[0-9]{10}" type="contact" id="contact">
+                                       <label class="mdl-textfield__label" for="contact">Contact</label>
+                                       <span class="mdl-textfield__error">Invalid contact number.</span>
+                               </div><br>
+                             
+                               <div class="mdl-textfield mdl-js-textfield">
+                                       <input class="mdl-textfield__input" type="date" id="dob">
+                                       <span class="mdl-textfield__error">Invalid date of birth</span>
+                               </div> 
+                           </td>
+       
+                           <td style="padding: 0 0 0 50">
+                                   <h5 style="color: blue">PROCTOR DETAILS</h5>
+                                   <div class="mdl-textfield mdl-js-textfield">
+                                           <input class="mdl-textfield__input" pattern="^[a-zA-Z\s]+$" type="text" id="name">
+                                           <label class="mdl-textfield__label" for="regno">Proctor's Name</label>
+                                           <span class="mdl-textfield__error">Invalid Name.</span>
+                                   </div><br>
+                               
+                                   <div class="mdl-textfield mdl-js-textfield">
+                                           <input class="mdl-textfield__input" type="email" id="email">
+                                           <label class="mdl-textfield__label" for="email">Proctor's Email</label>
+                                           <span class="mdl-textfield__error">Invalid email.</span>
+                                   </div><br>
+                                  
+                                   <div class="mdl-textfield mdl-js-textfield">
+                                           <input class="mdl-textfield__input" pattern="[0-9]{10}" type="contact" id="contact">
+                                           <label class="mdl-textfield__label" for="contact">Proctor's Contact</label>
+                                           <span class="mdl-textfield__error">Invalid contact number.</span>
+                                   </div><br><br><br><br><br><br><br><br><br>
+                           </td>  
+                           <td style="padding: 0 50 0 50">
+                                <br>
+                                <h5 style="color: blue">PARENT DETAILS</h5>
+
+                                <div class="mdl-textfield mdl-js-textfield">
+                                        <input class="mdl-textfield__input" pattern="^[a-zA-Z\s]+$" type="text" id="fathers-name">
+                                        <label class="mdl-textfield__label" for="regno">Father's Name</label>
+                                        <span class="mdl-textfield__error">Invalid name.</span>
+                                </div><br>
+                                
+                                <div class="mdl-textfield mdl-js-textfield">
+                                        <input class="mdl-textfield__input" type="text" id="name">
+                                        <label class="mdl-textfield__label" for="regno">Mother's Name</label>
+                                        <span class="mdl-textfield__error">Invalid name.</span>
+                                </div><br>
+                            
+                                <div class="mdl-textfield mdl-js-textfield">
+                                        <input class="mdl-textfield__input" type="email" id="email">
+                                        <label class="mdl-textfield__label" for="email">Parent's email</label>
+                                        <span class="mdl-textfield__error">Invalid email.</span>
+                                </div><br>
+                                
+                                <div class="mdl-textfield mdl-js-textfield">
+                                        <input class="mdl-textfield__input" pattern="[0-9]{10}" type="contact" id="contact">
+                                        <label class="mdl-textfield__label" for="contact">Parent Contact</label>
+                                        <span class="mdl-textfield__error">Invalid contact number.</span>
+                                </div><br>
+                                
+                                <div class="mdl-textfield mdl-js-textfield">
+                                    <textarea class="mdl-textfield__input" type="text" rows= "3" id="address" ></textarea>
+                                    <label class="mdl-textfield__label" for="sample5">Home address</label>
+                                </div>     
+            </td> 
+
+               </tr>
+       </table>
+       <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent button" style="float: right" id="send-d">
+            SEND
+       </button>
+    </div>
+
+
+
+
+
                 <div id = "mess-details">
                         <table id ="mess-details-table">
                                 <h5 style="color: blue">MESS DETAILS</h5>

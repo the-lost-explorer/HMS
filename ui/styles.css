@@ -70,22 +70,22 @@ body{
     margin: auto;
 }
 
-#student-details-tab,#mess-details-tab,#hostel-room-details-tab,#attendance-tab{
+#student-details-tab,#mess-details-tab,#hostel-room-details-tab,#attendance-tab,#search-student-tab,#approval-tab,#broadcast-tab,#add-student-tab{
     font-size: 18px;
 }
 
-#student-details-tab:hover,#mess-details-tab:hover,#hostel-room-details-tab:hover,#attendance-tab:hover{
+#student-details-tab:hover,#mess-details-tab:hover,#hostel-room-details-tab:hover,#attendance-tab:hover,#search-student-tab:hover,#approval-tab:hover,#broadcast-tab:hover,#add-student-tab:hover{
     cursor: hand;
     color: green;
 }
 
-#mess-details,#hostel-room-details,#attendance{
+#mess-details,#hostel-room-details,#attendance,#broadcast,#approval,#add-student,#student-details-wr{
     display: none;
 }
 
 #student-details{
     width: 600px;
-    height: 550px;
+    height: 580px;
     padding: 5% 5% 5% 5%;
     background: #ffffff;
     position: absolute;
@@ -121,3 +121,98 @@ body{
     margin: auto;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
+
+#student-details-wr{
+    width: 750px;
+    height: 750px;
+    padding: 5% 5% 5% 5%;
+    background: #ffffff;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 660;
+    margin: auto;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+#student-search{
+    width: 500px;
+    height: 100px;
+    padding: 5% 5% 5% 5%;
+    background: #ffffff;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 660;
+    margin: auto;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+#broadcast{
+    width: 700px;
+    height: 300px;
+    padding: 5% 5% 5% 5%;
+    background: #ffffff;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 660;
+    margin: auto;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+#pm{
+    padding: 1% 5% 1% 5%;
+    border: 1px dotted black;
+}
+
+#add-student{
+    width: 380px;
+    height: 550px;
+    padding: 5% 5% 5% 5%;
+    background: #ffffff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 750;
+    margin: auto;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    vertical-align: top;
+    display: none;
+}
+
+#add-student-d{
+    width: 1100px;
+    height: 500px;
+    padding: 5% 5% 5% 5%;
+    background: #ffffff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 550;
+    margin: auto;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    vertical-align: top;
+    display: none;
+}
+
+#edit:hover{
+    font-size: 28px;
+    cursor: hand;
+}
+/* #adds{
+    top: -35;
+    right: -170;
+} */
+
+/* table{
+    border: 10px solid black;
+}
+
+td{
+    border: 10px solid black;
+}
+
+th{
+    border: 10px solid black;
+} */

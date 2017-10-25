@@ -109,4 +109,9 @@ attendancebtn.on('click',function(){
     $("#attendance").css('display','inline');
 });
 
+$("#edit").on("click",function(){
+    $("#student-details").css("display","none");
+    $("#add-student-d").css("display","inline");
+});
+
 });

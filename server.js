@@ -78,6 +78,22 @@ app.get('/get-mess/:input', function(req, res) {
     dashManager.getMess(req, res, pool);
   });
 
+//get-userwr
+app.get('/get-userwr/:input', function(req, res) {
+    dashManager.getUserForWarden(req, res, pool);
+  });
+
+//post-message
+app.post('/bm', function(req, res){
+dashManager.addBM(req,res,pool);
+});
+
+//post-hostel-registration
+app.post('/mhr', function(req, res){
+    dashManager.addS(req,res,pool);
+    });
+
+
 //Hashing 
 //for backend use only
 app.get('/hash/:input', function(req, res) {

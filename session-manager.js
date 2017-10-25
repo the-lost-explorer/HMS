@@ -45,7 +45,7 @@ function isLogged(req,pool,callback){
     }
 }
 
-//CHeck login true
+//Check login true
 exports.checkLogin = function(req, res, pool){
     isLogged(req, pool, function(result){
       if(result=="false"){
@@ -65,9 +65,10 @@ exports.login = function(req,res,pool){
     pool.one('SELECT * FROM hms.users WHERE regno = $1',[regno])
     .then(function(data){
         var dbString = data.password;
+        console.log(dbString);
         var salt = dbString.split('$')[2];
         var hashedPassword = hash(password,salt);
-        if(hashedPPassword = dbString){
+        if(hashedPassword == dbString){
             req.session.auth = {regno: data.regno};
             console.log(data.regno + 'successfully logged in!');
             res.status(200).send('Credentials Correct!');
