@@ -44,6 +44,15 @@ app.get('/',function(req,res){
     res.sendFile(path.join(__dirname,'ui','index.html'));
 });
 
+app.get('/dashboard',function(req,res){
+    var val = dashManager.getDash(req,res);
+    if(val == 1){
+        res.sendFile(path.join(__dirname,'ui','dashboard.html'));
+    }else{
+        res.sendFile(path.join(__dirname,'ui','dashboard-wr.html'));
+    }
+});
+
 app.get('/ui/:fileName', function(req, res){
     res.sendFile(path.join(__dirname, 'ui', req.params.fileName));
 });
@@ -61,7 +70,6 @@ app.get('/check-login', function(req, res){
 app.get('/get-user', function(req, res){
     dashManager.getUser(req,res,pool);
 });
-
 
 //logout
 app.get('/logout', function(req, res){
@@ -83,16 +91,50 @@ app.get('/get-userwr/:input', function(req, res) {
     dashManager.getUserForWarden(req, res, pool);
   });
 
-//post-message
+//post-broadcast-message
 app.post('/bm', function(req, res){
 dashManager.addBM(req,res,pool);
 });
 
+//parent-id
+app.get('/pid', function(req, res){
+    dashManager.getParentID(req,res,pool);
+    });
+
 //post-hostel-registration
 app.post('/mhr', function(req, res){
     dashManager.addS(req,res,pool);
-    });
+});
 
+//update parent details
+app.post('/up', function(req, res){
+    dashManager.updateParent(req,res,pool);
+});
+
+//update student details
+app.post('/us', function(req, res){
+    dashManager.updateStudent(req,res,pool);
+});
+
+//leave-approval
+app.post('/al', function(req, res){
+    dashManager.approveLeave(req,res,pool);
+});
+
+//applying leave
+app.post('/leave', function(req, res){
+    dashManager.applyLeave(req,res,pool);
+});
+
+//getting broadcast messages
+app.get('/broadcast', function(req, res){
+    dashManager.getBM(req,res,pool);
+});
+
+//getting leave details
+app.get('/get-leave', function(req, res){
+    dashManager.getLeave(req,res,pool);
+});
 
 //Hashing 
 //for backend use only

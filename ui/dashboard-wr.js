@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    
+    var notification = document.querySelector('.mdl-js-snackbar');
     var searchbtn = $("#search-student-tab");
     var broadcastbtn = $("#broadcast-tab");
     var addbtn = $("#add-student-tab");
@@ -124,9 +124,21 @@ $(document).ready(function(){
             bm.onload = function(){
                 if(bm.readyState = XMLHttpRequest.DONE){
                     if(bm.status===200){
-                        console.log("Successful!")
+                        var data = {
+                            message: 'Message sent to all students! :)',
+                            actionHandler: function(event) {},
+                            actionText: 'HMS',
+                            timeout: 10000
+                          };
+                          notification.MaterialSnackbar.showSnackbar(data);
                     }else{
-                        console.log("Not successful!")
+                        var data = {
+                            message: 'Try again, some error occurred! :)',
+                            actionHandler: function(event) {},
+                            actionText: 'HMS',
+                            timeout: 10000
+                          };
+                          notification.MaterialSnackbar.showSnackbar(data);
                     }
                 }
             }
@@ -195,7 +207,7 @@ $(document).ready(function(){
         }else if(mt == "NORTH MESS" && ft == "VEGETARIAN"){
             messid = 1;
         }else if(mt == "NORTH MESS" && ft == "NON VEGETARIAN"){
-            messid == 2;
+            messid = 2;
         }else if(mt == "SOUTH MESS" && ft == "VEGETARIAN"){
             messid = 3;
         }else if(mt == "SOUTH MESS" && ft == "NON VEGETARIAN"){
@@ -222,8 +234,21 @@ $(document).ready(function(){
             if(hmr.readyState = XMLHttpRequest.DONE){
                 if(hmr.status===200){
                     console.log("Successful!")
+                    var data = {
+                        message: 'Details changed! :)',
+                        actionHandler: function(event) {},
+                        actionText: 'HMS',
+                        timeout: 10000
+                      };
+                      notification.MaterialSnackbar.showSnackbar(data);
                 }else{
-                    console.log("Not successful!")
+                    var data = {
+                        message: 'Fill in the details again! :(',
+                        actionHandler: function(event) {},
+                        actionText: 'HMS',
+                        timeout: 10000
+                      };
+                      notification.MaterialSnackbar.showSnackbar(data);
                 }
             }
         }
@@ -235,4 +260,85 @@ $(document).ready(function(){
         hmr.send(JSON.stringify({regno:regno,roomid:roomid,messid:messid,hb:hb,roomno:roomno}));
         console.log(roomid,messid,roomno,regno,hb);
     });
+
+    //Get Approval
+        var bmr = new XMLHttpRequest();
+            bmr.onload = function(){
+                if(bmr.readyState = XMLHttpRequest.DONE){
+                    if(bmr.status===200){
+                        var data = JSON.parse(bmr.responseText);
+                        console.log(data);
+                        for(i=0;i<data.length;i++){
+                            var approval = data[i].approval;
+                            console.log(approval);
+                            var intime = new Date(parseInt(data[i].in_time,10));
+                            var outtime = new Date(parseInt(data[i].out_time));
+                            ddi = intime.getDate();
+                            mmi = intime.getMonth() + 1;
+                            yyyyi = intime.getFullYear();
+                            hhi = intime.getHours();
+                            mimi = intime.getMinutes();
+                            in_time = ddi+"/"+mmi+"/"+yyyyi+" "+hhi+": "+mimi;
+
+                            hho = outtime.getHours();
+                            mimo = outtime.getMinutes();
+                            ddo = outtime.getDate();
+                            mmo = outtime.getMonth() + 1;
+                            yyyyo = outtime.getFullYear();
+                            out_time = ddo+"/"+mmo+"/"+yyyyo+" "+hho+": "+mimo;
+                            var mdiv = '<tr class="leave-approval-row"><td class="leave-id">'+data[i].id+'</td><td class = "regno-leave" >'+data[i].regno+'</td><td class = "out_time-leave">'+out_time+'</td><td class = "in_time-leave">'+in_time+'</td><td class="approval"><button class="la" id='+data[i].id+'>Approve</button></td></tr>';
+                            if(approval == false){
+                                $("#approval").append(mdiv);
+                                $(".leave-id").css('display','none');
+                                $(".regno-leave").css('padding-right','50');
+                                $(".out_time-leave").css('padding-right','50');
+                                $(".in_time-leave").css('padding-right','50');
+                            }
+                           
+
+                            $(".la").on('click',function(){
+                                console.log('hello');
+                                var la = new XMLHttpRequest();
+                                la.onload = function(){
+                                    if(la.readyState = XMLHttpRequest.DONE){
+                                        if(la.status===200){
+                                           $('.approval').html('Approved!');
+                                           var data = {
+                                            message: 'Approved! :)',
+                                            actionHandler: function(event) {},
+                                            actionText: 'HMS',
+                                            timeout: 100
+                                          };
+                                          notification.MaterialSnackbar.showSnackbar(data);
+                                        }else{
+                                            var data = {
+                                                message: 'Try again! :(',
+                                                actionHandler: function(event) {},
+                                                actionText: 'HMS',
+                                                timeout: 100
+                                              };
+                                              notification.MaterialSnackbar.showSnackbar(data);
+                                        }
+                                    }
+                                }
+                                var lid = $(this).attr('id');
+                                console.log(lid);
+                                    la.open('POST', 'http://localhost:8085/al', true);
+                                    la.setRequestHeader('Content-Type', 'application/json');
+                                    la.send(JSON.stringify({id: lid}));
+                            });
+                        }
+                        
+                    }else{
+                        $('#message').html(logout.responseText);
+                    }
+                }
+            }
+            bmr.open('GET','http://localhost:8085/get-leave',true);
+            bmr.send(null);
+        
+
+
+
+       
 });

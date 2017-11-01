@@ -10,11 +10,7 @@ $(document).ready(function(){
         login.onload = function(){
             if(login.readyState = XMLHttpRequest.DONE){
                 if(login.status===200){
-                    if(regno.slice(0,2) != 'WR'){
-                        window.location.href = "http://localhost:8085/ui/dashboard.html";
-                    }else{
-                        window.location.href = "http://localhost:8085/ui/dashboard-wr.html";
-                    }
+                        window.location.href = "http://localhost:8085/dashboard";
                 }else{
                     $('#message').html('Invalid Credentials');
                 }
